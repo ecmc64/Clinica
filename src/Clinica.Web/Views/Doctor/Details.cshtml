@@ -1,0 +1,84 @@
+@model Clinica.Web.Models.Doctor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Doctor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApellidoMaterno)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ApellidoMaterno)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApellidoPaterno)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ApellidoPaterno)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NroDocumento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NroDocumento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaAlta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroColegiatura)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroColegiatura)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PersonaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
