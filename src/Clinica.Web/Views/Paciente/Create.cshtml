@@ -1,0 +1,104 @@
+@model Clinica.Web.Models.Paciente
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Paciente</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ApellidoMaterno" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ApellidoMaterno" class="form-control" />
+                <span asp-validation-for="ApellidoMaterno" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApellidoPaterno" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ApellidoPaterno" class="form-control" />
+                <span asp-validation-for="ApellidoPaterno" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Direccion" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Estado" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FechaNacimiento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FechaRegistro" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FechaRegistro" class="form-control" />
+                <span asp-validation-for="FechaRegistro" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nombres" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Nombres" class="form-control" />
+                <span asp-validation-for="Nombres" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NroDocumento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NroDocumento" class="form-control" />
+                <span asp-validation-for="NroDocumento" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TipoDocumentoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TipoDocumentoId" class ="form-control" asp-items="ViewBag.TipoDocumentoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FechaUltimaVisita" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FechaUltimaVisita" class="form-control" />
+                <span asp-validation-for="FechaUltimaVisita" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Observacion" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Observacion" class="form-control" />
+                <span asp-validation-for="Observacion" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
