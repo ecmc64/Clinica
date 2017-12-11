@@ -15,14 +15,14 @@ namespace Clinica.Web.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "La página de descripción de la aplicación.";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "La página de contacto.";
 
             return View();
         }
