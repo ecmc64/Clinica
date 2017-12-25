@@ -22,7 +22,7 @@ namespace Clinica.Web.Controllers
         // GET: Paciente
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Paciente.Include(p => p.TipoDocumento);
+            var applicationDbContext = _context.Paciente.Include(p => p.PacienteCategoria);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace Clinica.Web.Controllers
                 return NotFound();
             }
 
-            var paciente = await _context.Paciente.SingleOrDefaultAsync(m => m.PersonaId == id);
+            var paciente = await _context.Paciente.SingleOrDefaultAsync(m => m.PacienteId == id);
             if (paciente == null)
             {
                 return NotFound();
@@ -46,7 +46,7 @@ namespace Clinica.Web.Controllers
         // GET: Paciente/Create
         public IActionResult Create()
         {
-            ViewData["TipoDocumentoId"] = new SelectList(_context.TipoDocumento, "TipoDocumentoId", "TipoDocumentoId");
+            ViewData["PacienteCategoriaId"] = new SelectList(_context.PacienteCategoria, "PacienteCategoriaId", "Descripcion");
             return View();
         }
 
@@ -55,7 +55,7 @@ namespace Clinica.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonaId,ApellidoMaterno,ApellidoPaterno,Direccion,Estado,FechaNacimiento,FechaRegistro,Nombres,NroDocumento,TipoDocumentoId,FechaUltimaVisita,Observacion")] Paciente paciente)
+        public async Task<IActionResult> Create([Bind("PacienteId,ApellidoMaterno,ApellidoPaterno,Direccion,Email,Estado,FechaNacimiento,Nombres,NumeroDocumento,PacienteCategoriaId,Telefonos")] Paciente paciente)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace Clinica.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["TipoDocumentoId"] = new SelectList(_context.TipoDocumento, "TipoDocumentoId", "TipoDocumentoId", paciente.TipoDocumentoId);
+            ViewData["PacienteCategoriaId"] = new SelectList(_context.PacienteCategoria, "PacienteCategoriaId", "Descripcion", paciente.PacienteCategoriaId);
             return View(paciente);
         }
 
@@ -75,12 +75,12 @@ namespace Clinica.Web.Controllers
                 return NotFound();
             }
 
-            var paciente = await _context.Paciente.SingleOrDefaultAsync(m => m.PersonaId == id);
+            var paciente = await _context.Paciente.SingleOrDefaultAsync(m => m.PacienteId == id);
             if (paciente == null)
             {
                 return NotFound();
             }
-            ViewData["TipoDocumentoId"] = new SelectList(_context.TipoDocumento, "TipoDocumentoId", "TipoDocumentoId", paciente.TipoDocumentoId);
+            ViewData["PacienteCategoriaId"] = new SelectList(_context.PacienteCategoria, "PacienteCategoriaId", "Descripcion", paciente.PacienteCategoriaId);
             return View(paciente);
         }
 
@@ -89,9 +89,9 @@ namespace Clinica.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PersonaId,ApellidoMaterno,ApellidoPaterno,Direccion,Estado,FechaNacimiento,FechaRegistro,Nombres,NroDocumento,TipoDocumentoId,FechaUltimaVisita,Observacion")] Paciente paciente)
+        public async Task<IActionResult> Edit(int id, [Bind("PacienteId,ApellidoMaterno,ApellidoPaterno,Direccion,Email,Estado,FechaNacimiento,Nombres,NumeroDocumento,PacienteCategoriaId,Telefonos")] Paciente paciente)
         {
-            if (id != paciente.PersonaId)
+            if (id != paciente.PacienteId)
             {
                 return NotFound();
             }
@@ -105,7 +105,7 @@ namespace Clinica.Web.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PacienteExists(paciente.PersonaId))
+                    if (!PacienteExists(paciente.PacienteId))
                     {
                         return NotFound();
                     }
@@ -116,7 +116,7 @@ namespace Clinica.Web.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["TipoDocumentoId"] = new SelectList(_context.TipoDocumento, "TipoDocumentoId", "TipoDocumentoId", paciente.TipoDocumentoId);
+            ViewData["PacienteCategoriaId"] = new SelectList(_context.PacienteCategoria, "PacienteCategoriaId", "Descripcion", paciente.PacienteCategoriaId);
             return View(paciente);
         }
 
@@ -128,7 +128,7 @@ namespace Clinica.Web.Controllers
                 return NotFound();
             }
 
-            var paciente = await _context.Paciente.SingleOrDefaultAsync(m => m.PersonaId == id);
+            var paciente = await _context.Paciente.SingleOrDefaultAsync(m => m.PacienteId == id);
             if (paciente == null)
             {
                 return NotFound();
@@ -142,7 +142,7 @@ namespace Clinica.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var paciente = await _context.Paciente.SingleOrDefaultAsync(m => m.PersonaId == id);
+            var paciente = await _context.Paciente.SingleOrDefaultAsync(m => m.PacienteId == id);
             _context.Paciente.Remove(paciente);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -150,7 +150,7 @@ namespace Clinica.Web.Controllers
 
         private bool PacienteExists(int id)
         {
-            return _context.Paciente.Any(e => e.PersonaId == id);
+            return _context.Paciente.Any(e => e.PacienteId == id);
         }
     }
 }

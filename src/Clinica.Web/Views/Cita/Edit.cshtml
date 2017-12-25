@@ -1,0 +1,110 @@
+@model Clinica.Web.Models.Cita
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Cita</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="CitaId" />
+        <div class="form-group">
+            <label asp-for="CentroMedicoId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="CentroMedicoId" class="form-control" asp-items="ViewBag.CentroMedicoId"></select>
+                <span asp-validation-for="CentroMedicoId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CitaEstadoId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="CitaEstadoId" class="form-control" asp-items="ViewBag.CitaEstadoId"></select>
+                <span asp-validation-for="CitaEstadoId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CitaTipoId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="CitaTipoId" class="form-control" asp-items="ViewBag.CitaTipoId"></select>
+                <span asp-validation-for="CitaTipoId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Descripcion" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FechaRegistra" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FechaRegistra" class="form-control" />
+                <span asp-validation-for="FechaRegistra" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Fin" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Fin" class="form-control" />
+                <span asp-validation-for="Fin" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Inicio" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Inicio" class="form-control" />
+                <span asp-validation-for="Inicio" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Observacion" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Observacion" class="form-control" />
+                <span asp-validation-for="Observacion" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PacienteId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="PacienteId" class="form-control" asp-items="ViewBag.PacienteId"></select>
+                <span asp-validation-for="PacienteId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Precio" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProfesionalId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="ProfesionalId" class="form-control" asp-items="ViewBag.ProfesionalId"></select>
+                <span asp-validation-for="ProfesionalId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="UsuarioRegistra" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="UsuarioRegistra" class="form-control" />
+                <span asp-validation-for="UsuarioRegistra" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

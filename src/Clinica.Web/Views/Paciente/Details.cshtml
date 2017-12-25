@@ -29,6 +29,12 @@
             @Html.DisplayFor(model => model.Direccion)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Estado)
         </dt>
         <dd>
@@ -41,38 +47,26 @@
             @Html.DisplayFor(model => model.FechaNacimiento)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FechaRegistro)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FechaRegistro)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Nombres)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Nombres)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.NroDocumento)
+            @Html.DisplayNameFor(model => model.NumeroDocumento)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.NroDocumento)
+            @Html.DisplayFor(model => model.NumeroDocumento)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FechaUltimaVisita)
+            @Html.DisplayNameFor(model => model.Telefonos)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.FechaUltimaVisita)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Observacion)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Observacion)
+            @Html.DisplayFor(model => model.Telefonos)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.PersonaId">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.PacienteId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

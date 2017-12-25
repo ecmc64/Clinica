@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-Clinica.Web-15ceb3c6-8629-49f2-ac56-01a47dcb691d",
 
   "dependencies": {
@@ -58,7 +58,11 @@
   },
 
   "frameworks": {
-    "net46": { }
+    "net46": {
+      "frameworkAssemblies": {
+        "System.Data": "4.0.0.0"
+      }
+    }
   },
 
   "buildOptions": {

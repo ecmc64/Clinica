@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Clinica.Web.Models;
+using System.Data;
 
 namespace Clinica.Web.Data
 {
@@ -24,12 +25,35 @@ namespace Clinica.Web.Data
 
         }
 
-        public DbSet<Doctor> Doctor { get; set; }
-        public DbSet<Especialidad> Especialidad { get; set; }
-        public DbSet<HorarioAtencion> HorarioAtencion { get; set; }
+        //static ApplicationDbContext()
+        //{
+        //    // Set the database intializer which is run once during application start
+        //    // This seeds the database with admin user credentials and admin role
+        //    Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
+        //}
+
+        //public class ApplicationDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+        //{
+        //}
+
+        //protected override void Seed(ApplicationDbContext context)
+        //{
+        //    InitializeIdentityForEF(context);
+        //    base.Seed(context);
+        //}
+
+
+        public DbSet<CentroMedico> CentroMedico { get; set; }
         public DbSet<Paciente> Paciente { get; set; }
-        public DbSet<Persona> Persona { get; set; }
-        public DbSet<ProgramaAtencion> ProgramaAtencion { get; set; }
-        public DbSet<TipoDocumento> TipoDocumento { get; set; }
+        public DbSet<Profesional> Profesional { get; set; }
+        public DbSet<ProfesionalCentroMedico> ProfesionalCentroMedico { get; set; }
+        public DbSet<ProfesionalTipo> ProfesionalTipo { get; set; }
+        public DbSet<PacienteCategoria> PacienteCategoria { get; set; }
+        public DbSet<Cita> Cita { get; set; }
+        public DbSet<Tarifa> Tarifa { get; set; }
+        public DbSet<CitaTipo> CitaTipo { get; set; }
+        public DbSet<CitaEstado> CitaEstado { get; set; }
+        public DbSet<ProfesionalHorario> ProfesionalHorario { get; set; }
+        public DbSet<TicketPago> TicketPago { get; set; }
     }
 }

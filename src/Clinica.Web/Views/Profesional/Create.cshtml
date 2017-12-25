@@ -1,0 +1,67 @@
+@model Clinica.Web.Models.Profesional
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Profesional</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Apellidos" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Apellidos" class="form-control" />
+                <span asp-validation-for="Apellidos" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Estado" />
+                    <label asp-for="Estado"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nombres" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Nombres" class="form-control" />
+                <span asp-validation-for="Nombres" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProfesionalTipoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ProfesionalTipoId" class ="form-control" asp-items="ViewBag.ProfesionalTipoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Telefonos" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Telefonos" class="form-control" />
+                <span asp-validation-for="Telefonos" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

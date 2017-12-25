@@ -46,7 +46,7 @@ namespace Clinica.Web
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("ClinicaCnx")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -92,6 +92,10 @@ namespace Clinica.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //Agregar inicializacion de BD, comentar luego
+            //ClinicaSeed.Initialize(app.ApplicationServices);
+
         }
     }
 }

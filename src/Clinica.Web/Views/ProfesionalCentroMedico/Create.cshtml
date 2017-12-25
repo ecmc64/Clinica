@@ -1,0 +1,50 @@
+@model Clinica.Web.Models.ProfesionalCentroMedico
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>ProfesionalCentroMedico</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="CentroMedicoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CentroMedicoId" class ="form-control" asp-items="ViewBag.CentroMedicoId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FechaRegistro" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FechaRegistro" class="form-control" />
+                <span asp-validation-for="FechaRegistro" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProfesionalHorarioId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ProfesionalHorarioId" class ="form-control" asp-items="ViewBag.ProfesionalHorarioId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProfesionalId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ProfesionalId" class ="form-control" asp-items="ViewBag.ProfesionalId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

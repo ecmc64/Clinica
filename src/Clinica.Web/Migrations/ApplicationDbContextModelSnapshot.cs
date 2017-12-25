@@ -65,39 +65,99 @@ namespace Clinica.Web.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Clinica.Web.Models.Especialidad", b =>
+            modelBuilder.Entity("Clinica.Web.Models.CentroMedico", b =>
                 {
-                    b.Property<int>("EspecialidadId")
+                    b.Property<int>("CentroMedicoId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Direccion");
+
+                    b.Property<bool>("Estado");
+
+                    b.Property<string>("Nombre");
+
+                    b.Property<string>("Telefonos");
+
+                    b.HasKey("CentroMedicoId");
+
+                    b.ToTable("CentroMedico");
+                });
+
+            modelBuilder.Entity("Clinica.Web.Models.Cita", b =>
+                {
+                    b.Property<int>("CitaId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CentroMedicoId");
+
+                    b.Property<int>("CitaEstadoId");
+
+                    b.Property<int>("CitaTipoId");
+
+                    b.Property<string>("Descripcion");
+
+                    b.Property<DateTime>("FechaRegistra");
+
+                    b.Property<DateTime>("Fin");
+
+                    b.Property<DateTime>("Inicio");
+
+                    b.Property<string>("Observacion");
+
+                    b.Property<int>("PacienteId");
+
+                    b.Property<double>("Precio");
+
+                    b.Property<int>("ProfesionalId");
+
+                    b.Property<string>("UsuarioRegistra");
+
+                    b.HasKey("CitaId");
+
+                    b.HasIndex("CentroMedicoId");
+
+                    b.HasIndex("CitaEstadoId");
+
+                    b.HasIndex("CitaTipoId");
+
+                    b.HasIndex("PacienteId");
+
+                    b.HasIndex("ProfesionalId");
+
+                    b.ToTable("Cita");
+                });
+
+            modelBuilder.Entity("Clinica.Web.Models.CitaEstado", b =>
+                {
+                    b.Property<int>("CitaEstadoId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Descripcion");
 
-                    b.Property<bool?>("Estado");
+                    b.Property<bool>("Estado");
 
-                    b.Property<DateTime?>("FechaCreacion");
+                    b.HasKey("CitaEstadoId");
 
-                    b.HasKey("EspecialidadId");
-
-                    b.ToTable("Especialidad");
+                    b.ToTable("CitaEstado");
                 });
 
-            modelBuilder.Entity("Clinica.Web.Models.HorarioAtencion", b =>
+            modelBuilder.Entity("Clinica.Web.Models.CitaTipo", b =>
                 {
-                    b.Property<int>("HorarioAtencionId")
+                    b.Property<int>("CitaTipoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("DescripcionRango");
+                    b.Property<string>("Descripcion");
 
-                    b.Property<bool?>("Estado");
+                    b.Property<bool>("Estado");
 
-                    b.HasKey("HorarioAtencionId");
+                    b.HasKey("CitaTipoId");
 
-                    b.ToTable("HorarioAtencion");
+                    b.ToTable("CitaTipo");
                 });
 
-            modelBuilder.Entity("Clinica.Web.Models.Persona", b =>
+            modelBuilder.Entity("Clinica.Web.Models.Paciente", b =>
                 {
-                    b.Property<int>("PersonaId")
+                    b.Property<int>("PacienteId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ApellidoMaterno");
@@ -106,76 +166,157 @@ namespace Clinica.Web.Migrations
 
                     b.Property<string>("Direccion");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
+                    b.Property<string>("Email");
 
-                    b.Property<bool?>("Estado");
+                    b.Property<bool>("Estado");
 
                     b.Property<DateTime?>("FechaNacimiento");
 
-                    b.Property<DateTime?>("FechaRegistro");
+                    b.Property<string>("Nombres");
+
+                    b.Property<string>("NumeroDocumento");
+
+                    b.Property<int>("PacienteCategoriaId");
+
+                    b.Property<string>("Telefonos");
+
+                    b.HasKey("PacienteId");
+
+                    b.HasIndex("PacienteCategoriaId");
+
+                    b.ToTable("Paciente");
+                });
+
+            modelBuilder.Entity("Clinica.Web.Models.PacienteCategoria", b =>
+                {
+                    b.Property<int>("PacienteCategoriaId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descripcion");
+
+                    b.Property<bool>("Estado");
+
+                    b.HasKey("PacienteCategoriaId");
+
+                    b.ToTable("PacienteCategoria");
+                });
+
+            modelBuilder.Entity("Clinica.Web.Models.Profesional", b =>
+                {
+                    b.Property<int>("ProfesionalId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Apellidos");
+
+                    b.Property<string>("Email");
+
+                    b.Property<bool>("Estado");
 
                     b.Property<string>("Nombres");
 
-                    b.Property<string>("NroDocumento");
+                    b.Property<int>("ProfesionalTipoId");
 
-                    b.Property<int?>("TipoDocumentoId");
+                    b.Property<string>("Telefonos");
 
-                    b.HasKey("PersonaId");
+                    b.HasKey("ProfesionalId");
 
-                    b.HasIndex("TipoDocumentoId");
+                    b.HasIndex("ProfesionalTipoId");
 
-                    b.ToTable("Persona");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Persona");
+                    b.ToTable("Profesional");
                 });
 
-            modelBuilder.Entity("Clinica.Web.Models.ProgramaAtencion", b =>
+            modelBuilder.Entity("Clinica.Web.Models.ProfesionalCentroMedico", b =>
                 {
-                    b.Property<int>("ProgramaAtencionId")
+                    b.Property<int>("ProfesionalCentroMedicoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool?>("CitaAtendida");
+                    b.Property<int>("CentroMedicoId");
 
-                    b.Property<string>("Diagnostico");
+                    b.Property<DateTime?>("FechaRegistro");
 
-                    b.Property<int>("DoctorId");
+                    b.Property<int>("ProfesionalHorarioId");
 
-                    b.Property<DateTime?>("Fecha");
+                    b.Property<int>("ProfesionalId");
 
-                    b.Property<DateTime?>("FechaAtencion");
+                    b.HasKey("ProfesionalCentroMedicoId");
 
-                    b.Property<DateTime?>("FechaDiagnostico");
+                    b.HasIndex("CentroMedicoId");
 
-                    b.Property<int>("HoraAtencionId");
+                    b.HasIndex("ProfesionalHorarioId");
 
-                    b.Property<string>("Observaciones");
+                    b.HasIndex("ProfesionalId");
 
-                    b.Property<int?>("PersonaId");
-
-                    b.HasKey("ProgramaAtencionId");
-
-                    b.HasIndex("DoctorId");
-
-                    b.HasIndex("HoraAtencionId");
-
-                    b.HasIndex("PersonaId");
-
-                    b.ToTable("ProgramaAtencion");
+                    b.ToTable("ProfesionalCentroMedico");
                 });
 
-            modelBuilder.Entity("Clinica.Web.Models.TipoDocumento", b =>
+            modelBuilder.Entity("Clinica.Web.Models.ProfesionalHorario", b =>
                 {
-                    b.Property<int>("TipoDocumentoId")
+                    b.Property<int>("ProfesionalHorarioId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool?>("Estado");
+                    b.Property<string>("Horario");
 
-                    b.Property<string>("NombreDocumento");
+                    b.HasKey("ProfesionalHorarioId");
 
-                    b.HasKey("TipoDocumentoId");
+                    b.ToTable("ProfesionalHorario");
+                });
 
-                    b.ToTable("TipoDocumento");
+            modelBuilder.Entity("Clinica.Web.Models.ProfesionalTipo", b =>
+                {
+                    b.Property<int>("ProfesionalTipoId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descripcion");
+
+                    b.Property<bool>("Estado");
+
+                    b.HasKey("ProfesionalTipoId");
+
+                    b.ToTable("ProfesionalTipo");
+                });
+
+            modelBuilder.Entity("Clinica.Web.Models.Tarifa", b =>
+                {
+                    b.Property<int>("TarifaId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CentroMedicoId");
+
+                    b.Property<int>("CitaTipoId");
+
+                    b.Property<bool>("Estado");
+
+                    b.Property<int>("PacienteCategoriaId");
+
+                    b.Property<double>("Precio");
+
+                    b.HasKey("TarifaId");
+
+                    b.HasIndex("CentroMedicoId");
+
+                    b.HasIndex("CitaTipoId");
+
+                    b.HasIndex("PacienteCategoriaId");
+
+                    b.ToTable("Tarifa");
+                });
+
+            modelBuilder.Entity("Clinica.Web.Models.TicketPago", b =>
+                {
+                    b.Property<int>("TicketPagoId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CitaId");
+
+                    b.Property<string>("NumeroComprobante");
+
+                    b.Property<bool>("Pagado");
+
+                    b.HasKey("TicketPagoId");
+
+                    b.HasIndex("CitaId");
+
+                    b.ToTable("TicketPago");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -285,60 +426,92 @@ namespace Clinica.Web.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Clinica.Web.Models.Doctor", b =>
+            modelBuilder.Entity("Clinica.Web.Models.Cita", b =>
                 {
-                    b.HasBaseType("Clinica.Web.Models.Persona");
+                    b.HasOne("Clinica.Web.Models.CentroMedico", "CentroMedico")
+                        .WithMany()
+                        .HasForeignKey("CentroMedicoId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.Property<string>("Comentario");
+                    b.HasOne("Clinica.Web.Models.CitaEstado", "CitaEstado")
+                        .WithMany("Cita")
+                        .HasForeignKey("CitaEstadoId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.Property<int?>("EspecialidadId");
+                    b.HasOne("Clinica.Web.Models.CitaTipo", "CitaTipo")
+                        .WithMany("Cita")
+                        .HasForeignKey("CitaTipoId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.Property<DateTime?>("FechaAlta");
+                    b.HasOne("Clinica.Web.Models.Paciente", "Paciente")
+                        .WithMany("Cita")
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.Property<string>("NumeroColegiatura");
-
-                    b.HasIndex("EspecialidadId");
-
-                    b.ToTable("Doctor");
-
-                    b.HasDiscriminator().HasValue("Doctor");
+                    b.HasOne("Clinica.Web.Models.Profesional", "Profesional")
+                        .WithMany("Cita")
+                        .HasForeignKey("ProfesionalId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Clinica.Web.Models.Paciente", b =>
                 {
-                    b.HasBaseType("Clinica.Web.Models.Persona");
-
-                    b.Property<DateTime?>("FechaUltimaVisita");
-
-                    b.Property<string>("Observacion");
-
-                    b.ToTable("Paciente");
-
-                    b.HasDiscriminator().HasValue("Paciente");
+                    b.HasOne("Clinica.Web.Models.PacienteCategoria", "PacienteCategoria")
+                        .WithMany("Paciente")
+                        .HasForeignKey("PacienteCategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Clinica.Web.Models.Persona", b =>
+            modelBuilder.Entity("Clinica.Web.Models.Profesional", b =>
                 {
-                    b.HasOne("Clinica.Web.Models.TipoDocumento", "TipoDocumento")
-                        .WithMany("Persona")
-                        .HasForeignKey("TipoDocumentoId");
+                    b.HasOne("Clinica.Web.Models.ProfesionalTipo", "ProfesionalTipo")
+                        .WithMany("Profesional")
+                        .HasForeignKey("ProfesionalTipoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Clinica.Web.Models.ProgramaAtencion", b =>
+            modelBuilder.Entity("Clinica.Web.Models.ProfesionalCentroMedico", b =>
                 {
-                    b.HasOne("Clinica.Web.Models.Doctor", "Doctor")
-                        .WithMany("ProgramaAtencion")
-                        .HasForeignKey("DoctorId")
+                    b.HasOne("Clinica.Web.Models.CentroMedico", "CentroMedico")
+                        .WithMany("ProfesionalCentroMedico")
+                        .HasForeignKey("CentroMedicoId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Clinica.Web.Models.HorarioAtencion", "HoraAtencion")
-                        .WithMany("ProgramaAtencion")
-                        .HasForeignKey("HoraAtencionId")
+                    b.HasOne("Clinica.Web.Models.ProfesionalHorario", "ProfesionalHorario")
+                        .WithMany("ProfesionalCentroMedico")
+                        .HasForeignKey("ProfesionalHorarioId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Clinica.Web.Models.Paciente", "Persona")
-                        .WithMany("ProgramaAtencion")
-                        .HasForeignKey("PersonaId");
+                    b.HasOne("Clinica.Web.Models.Profesional", "Profesional")
+                        .WithMany("ProfesionalCentroMedico")
+                        .HasForeignKey("ProfesionalId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Clinica.Web.Models.Tarifa", b =>
+                {
+                    b.HasOne("Clinica.Web.Models.CentroMedico", "CentroMedico")
+                        .WithMany("Tarifa")
+                        .HasForeignKey("CentroMedicoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Clinica.Web.Models.CitaTipo", "CitaTipo")
+                        .WithMany("Tarifa")
+                        .HasForeignKey("CitaTipoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Clinica.Web.Models.PacienteCategoria", "PacienteCategoria")
+                        .WithMany("Tarifa")
+                        .HasForeignKey("PacienteCategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Clinica.Web.Models.TicketPago", b =>
+                {
+                    b.HasOne("Clinica.Web.Models.Cita", "Cita")
+                        .WithMany()
+                        .HasForeignKey("CitaId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -376,13 +549,6 @@ namespace Clinica.Web.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Clinica.Web.Models.Doctor", b =>
-                {
-                    b.HasOne("Clinica.Web.Models.Especialidad", "Especialidad")
-                        .WithMany("Doctor")
-                        .HasForeignKey("EspecialidadId");
                 });
         }
     }

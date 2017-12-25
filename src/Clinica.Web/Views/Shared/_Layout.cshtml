@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Clinica.Web</title>
+    <title>@ViewData["Title"] - Clinica Core</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -32,8 +32,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="About">Acerca</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contacto</a></li>
-                    <li><a asp-area="" asp-controller="Doctor" asp-action="Index">Doctor</a></li>
+                    <li><a asp-area="" asp-controller="CentroMedico" asp-action="Index">Centro Medico</a></li>
+                    <li><a asp-area="" asp-controller="Profesional" asp-action="Index">Profesional</a></li>
                     <li><a asp-area="" asp-controller="Paciente" asp-action="Index">Paciente</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
@@ -44,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - Clinica.Web</p>
+            <p>&copy; 2017 - Clinica Core</p>
         </footer>
     </div>
 

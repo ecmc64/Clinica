@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Web;
 
 namespace Clinica.Web.Models
 {
-    public class Paciente : Persona
+    public class Paciente
     {
-        public Paciente()
-        {
-            ProgramaAtencion = new HashSet<ProgramaAtencion>();
-        }
+        public int PacienteId { get; set; }
+        public string Nombres { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public string Telefonos { get; set; }
+        public string Direccion { get; set; }
+        public string Email { get; set; }
+        public string NumeroDocumento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
+        public bool Estado { get; set; }
+        public int PacienteCategoriaId { get; set; }
 
-        public DateTime? FechaUltimaVisita { get; set; }
-        public string Observacion { get; set; }
-        //public int PersonaId { get; set; }
-
-        public virtual ICollection<ProgramaAtencion> ProgramaAtencion { get; set; }
-        //public virtual Persona Persona { get; set; }
-
+        public virtual ICollection<Cita> Cita { get; set; }
+        public virtual PacienteCategoria PacienteCategoria { get; set; }
     }
 }

@@ -11,7 +11,7 @@
         <h4>Paciente</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="PersonaId" />
+    <input type="hidden" asp-for="PacienteId" />
         <div class="form-group">
             <label asp-for="ApellidoMaterno" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -34,10 +34,18 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Estado" class="col-md-2 control-label"></label>
+            <label asp-for="Email" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Estado" class="form-control" />
-                <span asp-validation-for="Estado" class="text-danger" />
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Estado" />
+                    <label asp-for="Estado"></label>
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -48,13 +56,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="FechaRegistro" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="FechaRegistro" class="form-control" />
-                <span asp-validation-for="FechaRegistro" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
             <label asp-for="Nombres" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Nombres" class="form-control" />
@@ -62,31 +63,24 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="NroDocumento" class="col-md-2 control-label"></label>
+            <label asp-for="NumeroDocumento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="NroDocumento" class="form-control" />
-                <span asp-validation-for="NroDocumento" class="text-danger" />
+                <input asp-for="NumeroDocumento" class="form-control" />
+                <span asp-validation-for="NumeroDocumento" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="TipoDocumentoId" class="control-label col-md-2"></label>
+            <label asp-for="PacienteCategoriaId" class="control-label col-md-2"></label>
             <div class="col-md-10">
-                <select asp-for="TipoDocumentoId" class="form-control" asp-items="ViewBag.TipoDocumentoId"></select>
-                <span asp-validation-for="TipoDocumentoId" class="text-danger" />
+                <select asp-for="PacienteCategoriaId" class="form-control" asp-items="ViewBag.PacienteCategoriaId"></select>
+                <span asp-validation-for="PacienteCategoriaId" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="FechaUltimaVisita" class="col-md-2 control-label"></label>
+            <label asp-for="Telefonos" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="FechaUltimaVisita" class="form-control" />
-                <span asp-validation-for="FechaUltimaVisita" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Observacion" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Observacion" class="form-control" />
-                <span asp-validation-for="Observacion" class="text-danger" />
+                <input asp-for="Telefonos" class="form-control" />
+                <span asp-validation-for="Telefonos" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -101,6 +95,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
