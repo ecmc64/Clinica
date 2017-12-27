@@ -16,7 +16,7 @@ namespace Clinica.Web.Controllers
 
         public ProfesionalController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Profesional
@@ -35,6 +35,8 @@ namespace Clinica.Web.Controllers
             }
 
             var profesional = await _context.Profesional.SingleOrDefaultAsync(m => m.ProfesionalId == id);
+            profesional.ProfesionalTipo = await _context.ProfesionalTipo.SingleOrDefaultAsync(p => p.ProfesionalTipoId == profesional.ProfesionalTipoId);
+
             if (profesional == null)
             {
                 return NotFound();

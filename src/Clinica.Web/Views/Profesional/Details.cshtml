@@ -10,6 +10,15 @@
     <h4>Profesional</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfesionalTipoId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProfesionalTipo.Descripcion)
+        </dd>
+
+
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
