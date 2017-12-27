@@ -46,11 +46,11 @@ namespace Clinica.Web.Controllers
         // GET: Cita/Create
         public IActionResult Create()
         {
-            ViewData["CentroMedicoId"] = new SelectList(_context.CentroMedico, "CentroMedicoId", "CentroMedicoId");
-            ViewData["CitaEstadoId"] = new SelectList(_context.CitaEstado, "CitaEstadoId", "CitaEstadoId");
-            ViewData["CitaTipoId"] = new SelectList(_context.CitaTipo, "CitaTipoId", "CitaTipoId");
-            ViewData["PacienteId"] = new SelectList(_context.Paciente, "PacienteId", "PacienteId");
-            ViewData["ProfesionalId"] = new SelectList(_context.Profesional, "ProfesionalId", "ProfesionalId");
+            ViewData["CentroMedicoId"] = new SelectList(_context.CentroMedico, "CentroMedicoId", "Nombre");
+            ViewData["CitaEstadoId"] = new SelectList(_context.CitaEstado, "CitaEstadoId", "Descripcion");
+            ViewData["CitaTipoId"] = new SelectList(_context.CitaTipo, "CitaTipoId", "Descripcion");
+            ViewData["PacienteId"] = new SelectList(_context.Paciente, "PacienteId", "FullName");
+            ViewData["ProfesionalId"] = new SelectList(_context.Profesional, "ProfesionalId", "Nombres");
             return View();
         }
 
@@ -67,11 +67,11 @@ namespace Clinica.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["CentroMedicoId"] = new SelectList(_context.CentroMedico, "CentroMedicoId", "CentroMedicoId", cita.CentroMedicoId);
-            ViewData["CitaEstadoId"] = new SelectList(_context.CitaEstado, "CitaEstadoId", "CitaEstadoId", cita.CitaEstadoId);
-            ViewData["CitaTipoId"] = new SelectList(_context.CitaTipo, "CitaTipoId", "CitaTipoId", cita.CitaTipoId);
-            ViewData["PacienteId"] = new SelectList(_context.Paciente, "PacienteId", "PacienteId", cita.PacienteId);
-            ViewData["ProfesionalId"] = new SelectList(_context.Profesional, "ProfesionalId", "ProfesionalId", cita.ProfesionalId);
+            ViewData["CentroMedicoId"] = new SelectList(_context.CentroMedico, "CentroMedicoId", "Nombre", cita.CentroMedicoId);
+            ViewData["CitaEstadoId"] = new SelectList(_context.CitaEstado, "CitaEstadoId", "Descripcion", cita.CitaEstadoId);
+            ViewData["CitaTipoId"] = new SelectList(_context.CitaTipo, "CitaTipoId", "Descripcion", cita.CitaTipoId);
+            ViewData["PacienteId"] = new SelectList(_context.Paciente, "PacienteId", "FullName", cita.PacienteId);
+            ViewData["ProfesionalId"] = new SelectList(_context.Profesional, "ProfesionalId", "Nombres", cita.ProfesionalId);
             return View(cita);
         }
 
@@ -88,11 +88,11 @@ namespace Clinica.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["CentroMedicoId"] = new SelectList(_context.CentroMedico, "CentroMedicoId", "CentroMedicoId", cita.CentroMedicoId);
-            ViewData["CitaEstadoId"] = new SelectList(_context.CitaEstado, "CitaEstadoId", "CitaEstadoId", cita.CitaEstadoId);
-            ViewData["CitaTipoId"] = new SelectList(_context.CitaTipo, "CitaTipoId", "CitaTipoId", cita.CitaTipoId);
-            ViewData["PacienteId"] = new SelectList(_context.Paciente, "PacienteId", "PacienteId", cita.PacienteId);
-            ViewData["ProfesionalId"] = new SelectList(_context.Profesional, "ProfesionalId", "ProfesionalId", cita.ProfesionalId);
+            ViewData["CentroMedicoId"] = new SelectList(_context.CentroMedico, "CentroMedicoId", "Nombre", cita.CentroMedicoId);
+            ViewData["CitaEstadoId"] = new SelectList(_context.CitaEstado, "CitaEstadoId", "Descripcion", cita.CitaEstadoId);
+            ViewData["CitaTipoId"] = new SelectList(_context.CitaTipo, "CitaTipoId", "Descripcion", cita.CitaTipoId);
+            ViewData["PacienteId"] = new SelectList(_context.Paciente, "PacienteId", "FullName", cita.PacienteId);
+            ViewData["ProfesionalId"] = new SelectList(_context.Profesional, "ProfesionalId", "Nombres", cita.ProfesionalId);
             return View(cita);
         }
 
@@ -128,11 +128,11 @@ namespace Clinica.Web.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["CentroMedicoId"] = new SelectList(_context.CentroMedico, "CentroMedicoId", "CentroMedicoId", cita.CentroMedicoId);
-            ViewData["CitaEstadoId"] = new SelectList(_context.CitaEstado, "CitaEstadoId", "CitaEstadoId", cita.CitaEstadoId);
-            ViewData["CitaTipoId"] = new SelectList(_context.CitaTipo, "CitaTipoId", "CitaTipoId", cita.CitaTipoId);
-            ViewData["PacienteId"] = new SelectList(_context.Paciente, "PacienteId", "PacienteId", cita.PacienteId);
-            ViewData["ProfesionalId"] = new SelectList(_context.Profesional, "ProfesionalId", "ProfesionalId", cita.ProfesionalId);
+            ViewData["CentroMedicoId"] = new SelectList(_context.CentroMedico, "CentroMedicoId", "Nombre", cita.CentroMedicoId);
+            ViewData["CitaEstadoId"] = new SelectList(_context.CitaEstado, "CitaEstadoId", "Descripcion", cita.CitaEstadoId);
+            ViewData["CitaTipoId"] = new SelectList(_context.CitaTipo, "CitaTipoId", "Descripcion", cita.CitaTipoId);
+            ViewData["PacienteId"] = new SelectList(_context.Paciente, "PacienteId", "FullName", cita.PacienteId);
+            ViewData["ProfesionalId"] = new SelectList(_context.Profesional, "ProfesionalId", "Nombres", cita.ProfesionalId);
             return View(cita);
         }
 

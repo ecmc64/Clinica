@@ -15,6 +15,14 @@ namespace Clinica.Web.Models
         public string ApellidoPaterno { get; set; }
         [Display(Name = "Apellido Materno")]
         public string ApellidoMaterno { get; set; }
+        [Display(Name = "Nombre Completo")]
+        public string FullName
+        {
+            get
+            {
+                return ApellidoPaterno + " " + ApellidoMaterno + ", " + Nombres;
+            }
+        }
         public string Telefonos { get; set; }
         public string Direccion { get; set; }
         //[EmailAddress(ErrorMessage = "E-mail en formato inválido.")]

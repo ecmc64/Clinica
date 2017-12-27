@@ -87,14 +87,14 @@ namespace Clinica.Web.Data
         {
             var lista = new List<Profesional>
             {
-            new Profesional{Nombres="Julio", ProfesionalTipoId = 1, Estado=true },
-            new Profesional{Nombres="Karla", ProfesionalTipoId = 1, Estado=true },
-            new Profesional{Nombres="Katty", ProfesionalTipoId = 2, Estado=true },
-            new Profesional{Nombres="Paola", ProfesionalTipoId = 2, Estado=true },
-            new Profesional{Nombres="Patricia", ProfesionalTipoId = 3, Estado=true },
-            new Profesional{Nombres="Diana", ProfesionalTipoId = 3, Estado=true },
-            new Profesional{Nombres="Jose", ProfesionalTipoId = 4, Estado=true },
-            new Profesional{Nombres="Carlos", ProfesionalTipoId = 4, Estado=true },
+            new Profesional{Nombres="Julio Sanchez", ProfesionalTipoId = 1, Estado=true },
+            new Profesional{Nombres="Karla Castillo", ProfesionalTipoId = 1, Estado=true },
+            new Profesional{Nombres="Katty Diaz", ProfesionalTipoId = 2, Estado=true },
+            new Profesional{Nombres="Paola Melendez", ProfesionalTipoId = 2, Estado=true },
+            new Profesional{Nombres="Patricia Saenz", ProfesionalTipoId = 3, Estado=true },
+            new Profesional{Nombres="Diana Sabina", ProfesionalTipoId = 3, Estado=true },
+            new Profesional{Nombres="Jose Andrade", ProfesionalTipoId = 4, Estado=true },
+            new Profesional{Nombres="Carlos Terrones", ProfesionalTipoId = 4, Estado=true },
 
             };
             return lista;
@@ -103,14 +103,14 @@ namespace Clinica.Web.Data
         {
             var lista = new List<Paciente>
             {
-            new Paciente{Nombres="Luis", PacienteCategoriaId = 1, Estado=true },
-            new Paciente{Nombres="Eduardo", PacienteCategoriaId = 1, Estado=true },
-            new Paciente{Nombres="Madeleine", PacienteCategoriaId = 2, Estado=true },
-            new Paciente{Nombres="Eduardo", PacienteCategoriaId = 2, Estado=true },
-            new Paciente{Nombres="Ana María", PacienteCategoriaId = 3, Estado=true },
-            new Paciente{Nombres="Valeria", PacienteCategoriaId = 3, Estado=true },
-            new Paciente{Nombres="Sara", PacienteCategoriaId = 4, Estado=true },
-            new Paciente{Nombres="Alberto", PacienteCategoriaId = 4, Estado=true }
+            new Paciente{Nombres="Luis", ApellidoPaterno="Gonzales", ApellidoMaterno="Carrera", PacienteCategoriaId = 1, Estado=true },
+            new Paciente{Nombres="Eduardo", ApellidoPaterno="Perez", ApellidoMaterno="Gutierrea",PacienteCategoriaId = 1, Estado=true },
+            new Paciente{Nombres="Madeleine", ApellidoPaterno="Sanchez", ApellidoMaterno="Rios",PacienteCategoriaId = 2, Estado=true },
+            new Paciente{Nombres="Eduardo", ApellidoPaterno="Roca", ApellidoMaterno="Postillo",PacienteCategoriaId = 2, Estado=true },
+            new Paciente{Nombres="Ana María", ApellidoPaterno="Velasquez", ApellidoMaterno="Hermes",PacienteCategoriaId = 3, Estado=true },
+            new Paciente{Nombres="Valeria", ApellidoPaterno="Murcia", ApellidoMaterno="Balvin",PacienteCategoriaId = 3, Estado=true },
+            new Paciente{Nombres="Sara", ApellidoPaterno="Salazar", ApellidoMaterno="Galarza",PacienteCategoriaId = 4, Estado=true },
+            new Paciente{Nombres="Alberto", ApellidoPaterno="Litama", ApellidoMaterno="Rodriguez",PacienteCategoriaId = 4, Estado=true }
             };
             return lista;
         }
