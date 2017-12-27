@@ -55,7 +55,7 @@ namespace Clinica.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProfesionalId,Apellidos,Email,Estado,Nombres,ProfesionalTipoId,Telefonos")] Profesional profesional)
+        public async Task<IActionResult> Create([Bind("ProfesionalId,Email,Estado,Nombres,ProfesionalTipoId,Telefonos")] Profesional profesional)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Clinica.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProfesionalId,Apellidos,Email,Estado,Nombres,ProfesionalTipoId,Telefonos")] Profesional profesional)
+        public async Task<IActionResult> Edit(int id, [Bind("ProfesionalId,Email,Estado,Nombres,ProfesionalTipoId,Telefonos")] Profesional profesional)
         {
             if (id != profesional.ProfesionalId)
             {
@@ -116,7 +116,7 @@ namespace Clinica.Web.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["ProfesionalTipoId"] = new SelectList(_context.ProfesionalTipo, "ProfesionalTipoId", "ProfesionalTipoId", profesional.ProfesionalTipoId);
+            ViewData["ProfesionalTipoId"] = new SelectList(_context.ProfesionalTipo, "ProfesionalTipoId", "Descripcion", profesional.ProfesionalTipoId);
             return View(profesional);
         }
 

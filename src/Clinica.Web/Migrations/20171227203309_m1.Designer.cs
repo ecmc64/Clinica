@@ -8,8 +8,8 @@ using Clinica.Web.Data;
 namespace Clinica.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171223133222_m2")]
-    partial class m2
+    [Migration("20171227203309_m1")]
+    partial class m1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -206,8 +206,6 @@ namespace Clinica.Web.Migrations
                 {
                     b.Property<int>("ProfesionalId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Apellidos");
 
                     b.Property<string>("Email");
 

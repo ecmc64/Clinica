@@ -1,4 +1,4 @@
-@model Clinica.Web.Models.Profesional
+@model Clinica.Web.Models.CentroMedico
 
 @{
     ViewData["Title"] = "Details";
@@ -7,14 +7,14 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Profesional</h4>
+    <h4>CentroMedico</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Direccion)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.Direccion)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Estado)
@@ -23,10 +23,10 @@
             @Html.DisplayFor(model => model.Estado)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Nombres)
+            @Html.DisplayNameFor(model => model.Nombre)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Nombres)
+            @Html.DisplayFor(model => model.Nombre)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Telefonos)
@@ -37,6 +37,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ProfesionalId">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.CentroMedicoId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

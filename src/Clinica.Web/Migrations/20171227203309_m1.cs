@@ -257,7 +257,6 @@ namespace Clinica.Web.Migrations
                 {
                     ProfesionalId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Apellidos = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Estado = table.Column<bool>(nullable: false),
                     Nombres = table.Column<string>(nullable: true),

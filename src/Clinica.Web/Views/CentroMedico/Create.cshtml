@@ -1,22 +1,21 @@
-@model Clinica.Web.Models.Profesional
+@model Clinica.Web.Models.CentroMedico
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 
-<form asp-action="Edit">
+<form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Profesional</h4>
+        <h4>CentroMedico</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="ProfesionalId" />
         <div class="form-group">
-            <label asp-for="Email" class="col-md-2 control-label"></label>
+            <label asp-for="Direccion" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger" />
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -28,17 +27,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Nombres" class="col-md-2 control-label"></label>
+            <label asp-for="Nombre" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Nombres" class="form-control" />
-                <span asp-validation-for="Nombres" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ProfesionalTipoId" class="control-label col-md-2"></label>
-            <div class="col-md-10">
-                <select asp-for="ProfesionalTipoId" class="form-control" asp-items="ViewBag.ProfesionalTipoId"></select>
-                <span asp-validation-for="ProfesionalTipoId" class="text-danger" />
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -50,7 +42,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

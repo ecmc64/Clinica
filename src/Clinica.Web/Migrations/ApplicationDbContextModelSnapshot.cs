@@ -206,8 +206,6 @@ namespace Clinica.Web.Migrations
                     b.Property<int>("ProfesionalId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Apellidos");
-
                     b.Property<string>("Email");
 
                     b.Property<bool>("Estado");
