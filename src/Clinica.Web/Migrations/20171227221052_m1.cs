@@ -200,7 +200,7 @@ namespace Clinica.Web.Migrations
                     Email = table.Column<string>(nullable: true),
                     Estado = table.Column<bool>(nullable: false),
                     FechaNacimiento = table.Column<DateTime>(nullable: true),
-                    Nombres = table.Column<string>(nullable: true),
+                    Nombres = table.Column<string>(nullable: false),
                     NumeroDocumento = table.Column<string>(nullable: true),
                     PacienteCategoriaId = table.Column<int>(nullable: false),
                     Telefonos = table.Column<string>(nullable: true)
@@ -259,7 +259,7 @@ namespace Clinica.Web.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(nullable: true),
                     Estado = table.Column<bool>(nullable: false),
-                    Nombres = table.Column<string>(nullable: true),
+                    Nombres = table.Column<string>(nullable: false),
                     ProfesionalTipoId = table.Column<int>(nullable: false),
                     Telefonos = table.Column<string>(nullable: true)
                 },

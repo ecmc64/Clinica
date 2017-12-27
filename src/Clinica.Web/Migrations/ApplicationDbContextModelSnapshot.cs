@@ -172,7 +172,8 @@ namespace Clinica.Web.Migrations
 
                     b.Property<DateTime?>("FechaNacimiento");
 
-                    b.Property<string>("Nombres");
+                    b.Property<string>("Nombres")
+                        .IsRequired();
 
                     b.Property<string>("NumeroDocumento");
 
@@ -210,7 +211,8 @@ namespace Clinica.Web.Migrations
 
                     b.Property<bool>("Estado");
 
-                    b.Property<string>("Nombres");
+                    b.Property<string>("Nombres")
+                        .IsRequired();
 
                     b.Property<int>("ProfesionalTipoId");
 

@@ -8,7 +8,7 @@ using Clinica.Web.Data;
 namespace Clinica.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171227203309_m1")]
+    [Migration("20171227221052_m1")]
     partial class m1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,7 +173,8 @@ namespace Clinica.Web.Migrations
 
                     b.Property<DateTime?>("FechaNacimiento");
 
-                    b.Property<string>("Nombres");
+                    b.Property<string>("Nombres")
+                        .IsRequired();
 
                     b.Property<string>("NumeroDocumento");
 
@@ -211,7 +212,8 @@ namespace Clinica.Web.Migrations
 
                     b.Property<bool>("Estado");
 
-                    b.Property<string>("Nombres");
+                    b.Property<string>("Nombres")
+                        .IsRequired();
 
                     b.Property<int>("ProfesionalTipoId");
 
