@@ -31,10 +31,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">Acerca</a></li>
                     <li><a asp-area="" asp-controller="CentroMedico" asp-action="Index">Centro Medico</a></li>
-                    <li><a asp-area="" asp-controller="Profesional" asp-action="Index">Profesional</a></li>
+                    <li><a asp-area="" asp-controller="Profesional" asp-action="Index">Profesionales</a></li>
                     <li><a asp-area="" asp-controller="Paciente" asp-action="Index">Paciente</a></li>
+                    <li><a asp-area="" asp-controller="Cita" asp-action="Index">Citas</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
