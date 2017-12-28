@@ -12,6 +12,7 @@ namespace Clinica.Web.Models
         [Required(ErrorMessage = "Ingrese Nombre")]
         public string Nombres { get; set; }
         public string Telefonos { get; set; }
+        [Display(Name = "Correo")]
         [EmailAddress(ErrorMessage = "E-mail en formato inválido.")]
         public string Email { get; set; }
         public bool Estado { get; set; }
