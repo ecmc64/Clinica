@@ -34,8 +34,7 @@ namespace Clinica.Web.Controllers
                 return NotFound();
             }
 
-            var profesional = await _context.Profesional.SingleOrDefaultAsync(m => m.ProfesionalId == id);
-            profesional.ProfesionalTipo = await _context.ProfesionalTipo.SingleOrDefaultAsync(p => p.ProfesionalTipoId == profesional.ProfesionalTipoId);
+            var profesional = await _context.Profesional.Include(x => x.ProfesionalTipo).SingleOrDefaultAsync(m => m.ProfesionalId == id);
 
             if (profesional == null)
             {
