@@ -22,6 +22,7 @@ namespace Clinica.Web.Controllers
         // GET: CentroMedico
         public async Task<IActionResult> Index()
         {
+            ViewBag.Titulo = "Listado de Clínicas";
             return View(await _context.CentroMedico.ToListAsync());
         }
 
@@ -128,7 +129,7 @@ namespace Clinica.Web.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.Mensaje = "¿Está seguro de eliminar?";
             return View(centroMedico);
         }
 
