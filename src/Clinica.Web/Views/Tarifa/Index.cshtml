@@ -13,6 +13,15 @@
     <thead>
         <tr>
             <th>
+                Centro Medico
+            </th>
+            <th>
+                Cita Tipo
+            </th>
+            <th>
+                Paciente Catgoria
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
             <th>
@@ -24,6 +33,15 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CentroMedico.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CitaTipo.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PacienteCategoria.Descripcion)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
