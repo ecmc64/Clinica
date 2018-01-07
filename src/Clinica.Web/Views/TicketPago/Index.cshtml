@@ -4,19 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Listado</h2>
+<h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Crear Nuevo</a>
+    <a asp-action="Create">Create New</a>
 </p>
-<table class="table table-striped table-hover">
+<table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoPagado)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.NumeroComprobante)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Pagado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vuelto)
             </th>
             <th></th>
         </tr>
@@ -25,15 +31,21 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.MontoPagado)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.NumeroComprobante)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Pagado)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TicketPagoId">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.TicketPagoId">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.TicketPagoId">Eliminar</a>
+                @Html.DisplayFor(modelItem => item.Vuelto)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TicketPagoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TicketPagoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TicketPagoId">Delete</a>
             </td>
         </tr>
 }

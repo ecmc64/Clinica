@@ -11,6 +11,8 @@ namespace Clinica.Web.Models
         public int CitaId { get; set; }
         public bool Pagado { get; set; }
         public string NumeroComprobante { get; set; }
+        public double MontoPagado { get; set; }
+        public double Vuelto { get; set; }
 
         public virtual Cita Cita { get; set; }
 

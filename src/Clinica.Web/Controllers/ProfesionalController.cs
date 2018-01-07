@@ -23,7 +23,14 @@ namespace Clinica.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Profesional.Include(p => p.ProfesionalTipo);
-            return View(await applicationDbContext.ToListAsync());
+            var result = await applicationDbContext.ToListAsync();
+            return View(result);
+        }
+        public async Task<JsonResult> JsonData()
+        {
+            var data = await _context.Profesional.Include(p => p.ProfesionalTipo).ToListAsync();
+            var result = Json(data);
+            return result;
         }
 
         // GET: Profesional/Details/5
