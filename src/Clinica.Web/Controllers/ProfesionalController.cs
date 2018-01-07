@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Clinica.Web.Data;
 using Clinica.Web.Models;
+using System.Data;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace Clinica.Web.Controllers
 {
@@ -36,9 +39,36 @@ namespace Clinica.Web.Controllers
 
         public async Task<JsonResult> JsonData()
         {
-            var data = await _context.Profesional.Include(p => p.ProfesionalTipo).ToListAsync();
+            var data = await _context.Profesional.Include(p => p.ProfesionalTipo).OrderBy(z => z.Nombres).ToListAsync();
             var result = Json(data);
             return result;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Exportar()
+        {
+            var contactos = await _context.Profesional.Include(p => p.ProfesionalTipo).OrderBy(z => z.Nombres).ToListAsync();
+
+            DataTable dt = new DataTable("Grid");
+            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("Nombres"),
+                                            new DataColumn("Telefonos"),
+                                            new DataColumn("Email"),
+                                            new DataColumn("Estado"),
+                                            new DataColumn("Tipo Profesional") });
+            foreach (var item in contactos)
+            {
+                dt.Rows.Add(item.Nombres, item.Telefonos, item.Email, item.Estado ? "Activo" : "Inactivo", item.ProfesionalTipo.Descripcion);
+            }
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Profesional.xlsx");
+                }
+            }
         }
 
         // GET: Profesional/Details/5

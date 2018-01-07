@@ -1,5 +1,4 @@
 
-
 @model IEnumerable<Clinica.Web.Models.Profesional>
 
 @{
@@ -8,9 +7,18 @@
 
 <h2>Listado</h2>
 
-<p>
-    <a asp-action="Create">Crear Nuevo</a>
-</p>
+
+
+<form asp-action="Exportar">
+    <p>
+        <a asp-action="Create">Crear Nuevo</a> | 
+        @*<div class="form-actions no-color">*@
+        <button type="submit" class="btn btn-success" formaction=@Url.Action("Exportar") formmethod="post">
+            Exportar Excel
+        </button>
+        @*</div>*@
+    </p>
+</form>
 
 <div id="grid"></div>
 

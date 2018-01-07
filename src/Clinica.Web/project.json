@@ -2,6 +2,7 @@
   "userSecretsId": "aspnet-Clinica.Web-15ceb3c6-8629-49f2-ac56-01a47dcb691d",
 
   "dependencies": {
+    "ClosedXML": "0.90.0",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
