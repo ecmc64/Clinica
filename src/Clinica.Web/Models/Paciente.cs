@@ -29,8 +29,11 @@ namespace Clinica.Web.Models
         public string Email { get; set; }
         [Display(Name = "Numero de Documento")]
         public string NumeroDocumento { get; set; }
+
         [Display(Name = "Fecha de Nacimiento")]
+        [DataType(DataType.Date)]
         public DateTime? FechaNacimiento { get; set; }
+
         public bool Estado { get; set; }
         [Display(Name = "Categoria Paciente")]
         public int PacienteCategoriaId { get; set; }
