@@ -1,4 +1,6 @@
-@model IEnumerable<Clinica.Web.Models.Paciente>
+@*@model IEnumerable<Clinica.Web.Models.Paciente>*@
+@using Clinica.Util
+@model PaginatedList<Clinica.Web.Models.Paciente>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,32 +15,32 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().FullName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Direccion)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Direccion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Estado)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Estado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaNacimiento)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().FechaNacimiento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NumeroDocumento)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().NumeroDocumento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefonos)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Telefonos)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
-        {
+            {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.FullName)
@@ -70,3 +72,20 @@
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-numPagina="@(Model.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    Anterior
+</a>
+<a asp-action="Index"
+   asp-route-numPagina="@(Model.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    Siguiente
+</a>
+
