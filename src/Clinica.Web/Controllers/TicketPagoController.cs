@@ -23,6 +23,8 @@ namespace Clinica.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.TicketPago.Include(t => t.Cita);
+            //var lista = await applicationDbContext.ToListAsync();
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -59,6 +61,7 @@ namespace Clinica.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                ticketPago.Pagado = true;
                 _context.Add(ticketPago);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -151,6 +154,12 @@ namespace Clinica.Web.Controllers
         private bool TicketPagoExists(int id)
         {
             return _context.TicketPago.Any(e => e.TicketPagoId == id);
+        }
+
+        public JsonResult GetCitaById(int pCitaId)
+        {
+            var data = _context.Cita.Where(c => c.CitaId == pCitaId).ToListAsync();
+            return Json(data);
         }
     }
 }

@@ -4,22 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Ticket de Pagos</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Cobro de Cita</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MontoPagado)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.NumeroComprobante)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pagado)
+                @Html.DisplayNameFor(model => model.MontoPagado)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Vuelto)
@@ -31,21 +28,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MontoPagado)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.NumeroComprobante)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pagado)
+                @Html.DisplayFor(modelItem => item.MontoPagado)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Vuelto)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TicketPagoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TicketPagoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TicketPagoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.TicketPagoId"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> |
+                <a asp-action="Details" asp-route-id="@item.TicketPagoId"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a> |
+                <a asp-action="Delete" asp-route-id="@item.TicketPagoId"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
             </td>
         </tr>
 }

@@ -8,7 +8,7 @@
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Cita</h4>
+        <h4>Nueva cita</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -44,17 +44,17 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Fin" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Fin" class="form-control" />
-                <span asp-validation-for="Fin" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
             <label asp-for="Inicio" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Inicio" class="form-control" />
                 <span asp-validation-for="Inicio" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Fin" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Fin" class="form-control" />
+                <span asp-validation-for="Fin" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

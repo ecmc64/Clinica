@@ -10,20 +10,23 @@
     <div class="form-horizontal">
         <h4>TicketPago</h4>
         <hr />
+        
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="CitaId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="CitaId" class ="form-control" asp-items="ViewBag.CitaId"></select>
+                <input asp-for="CitaId" class ="form-control" />
+                <input id="btnBuscarCita" type="button" value="Buscar" class="btn btn-primary" />
             </div>
         </div>
+
         <div class="form-group">
-            <label asp-for="MontoPagado" class="col-md-2 control-label"></label>
+            <label id="lblMontoCita" class="col-md-2 control-label">Monto Cita</label>
             <div class="col-md-10">
-                <input asp-for="MontoPagado" class="form-control" />
-                <span asp-validation-for="MontoPagado" class="text-danger" />
+                <input type="text" id="txtMontoCita" disabled="disabled" class="form-control" />
             </div>
         </div>
+
         <div class="form-group">
             <label asp-for="NumeroComprobante" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -31,18 +34,19 @@
                 <span asp-validation-for="NumeroComprobante" class="text-danger" />
             </div>
         </div>
+
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="Pagado" />
-                    <label asp-for="Pagado"></label>
-                </div>
+            <label asp-for="MontoPagado" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MontoPagado" class="form-control" onkeydown="calcularVuelto()" />
+                <span asp-validation-for="MontoPagado" class="text-danger" />
             </div>
         </div>
+
         <div class="form-group">
             <label asp-for="Vuelto" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Vuelto" class="form-control" />
+                <input asp-for="Vuelto" class="form-control"/>
                 <span asp-validation-for="Vuelto" class="text-danger" />
             </div>
         </div>
@@ -55,9 +59,52 @@
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Regresar a lista</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script type="text/javascript">
+        var montoCita = 0;
+
+        $(document).ready(function () {
+            $("#btnBuscarCita").click(function () {
+
+                var dni = $("#CitaId").val();
+                $.ajax({
+                    type: "POST",
+                    url: "GetCitaById",
+                    data: {
+                        pCitaId: dni
+                    },
+                    success: function (response) {
+                        if (response.result.length > 0) {
+                            $("#txtMontoCita").val(response.result[0].precio);
+                            montoCita = response.result[0].precio;
+                            //$("#PacienteId").val(response.result[0].PacienteId);
+                        }
+                        else {
+                            alert("Cita ingresada no existe");
+                        }
+                    },
+                    error: function () {
+                        alert("Error en la llamada");
+                    }
+                });
+            });
+
+            $("#MontoPagado").keyup(function () {
+                var pago = $("#MontoPagado").val();
+                var vueltoefectivo = pago - montoCita;
+                $("#Vuelto").val(vueltoefectivo);
+            });
+
+
+            function calcularVuelto() {
+                
+            }
+        })
+    </script>
+
 }

@@ -1,0 +1,175 @@
+@model Clinica.Web.Models.ViewModels.CitaRegistroViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Nueva Cita</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Registro de Cita</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="FechaCita" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FechaCita" class="form-control" />
+                <span asp-validation-for="FechaCita" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Inicio" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Inicio" class="form-control" />
+                <span asp-validation-for="Inicio" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Fin" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Fin" class="form-control" />
+                <span asp-validation-for="Fin" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CentroMedicoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CentroMedicoId" class="form-control" asp-items="ViewBag.CentroMedicoId"> </select>
+                <span asp-validation-for="CentroMedicoId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CitaTipoId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CitaTipoId" class="form-control" asp-items="ViewBag.CitaTipoId"></select>
+                <span asp-validation-for="CitaTipoId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProfesionalId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ProfesionalId" class="form-control" asp-items="ViewBag.ProfesionalId"></select>
+                <span asp-validation-for="ProfesionalId" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DniPaciente" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DniPaciente" class="form-control" />
+                <input id="btnBuscarPaciente" type="button" value="Buscar" class="btn btn-primary" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NombrePaciente" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NombrePaciente" class="form-control" disabled="disabled" />
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            <label id="DniPaciente" class="col-md-2 control-label">DNI</label>
+            <div class="col-md-10">
+                <input type="text" id="txtPacienteId" class="form-control"/>
+                <input id="btnBuscarPaciente" type="button" value="Buscar" class="btn btn-primary"  />
+            </div>
+            
+        </div>
+
+        <div class="form-group">
+            <label id="NombrePaciente" class="col-md-2 control-label">Nombre Paciente</label>
+            <div class="col-md-10">
+                <input type="text" id="txtNombrePaciente"  disabled="disabled"  class="form-control" />
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <label asp-for="Precio" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Volver a listado</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnBuscarPaciente").click(function () {
+                
+                var dni = $("#DniPaciente").val();
+                var categoriaPaciente = 0;
+                $.ajax({
+                    type: "POST",
+                    url: "GetPacienteByDni", 
+                    data: {
+                        pDni:dni
+                    }, 
+                    success: function (response) { 
+                        if (response.result.length > 0) {
+                            $("#NombrePaciente").val(response.result[0].fullName);
+                            $("#PacienteId").val(response.result[0].PacienteId);
+                            categoriaPaciente = response.result[0].pacienteCategoriaId;
+                            if (categoriaPaciente > 0)
+                                ObtenerPrecioPaciente(categoriaPaciente);
+                        }
+                        else
+                        {
+                            $("#NombrePaciente").val("Paciente no encontrado");
+                        }
+                    },
+                    error: function () {
+                        $("#PacienteId").val(0);
+                        alert("Error en la llamada");
+                    }
+                });
+            });
+
+            function ObtenerPrecioPaciente(CategoriaPaciente) {
+                var centroMedico = $("#CentroMedicoId").val();
+                var tipoCita = $("#CitaTipoId").val();
+                
+
+                $.ajax({
+                    type: "POST",
+                    url: "GetTarifaPaciente",
+                    data: {
+                        pCentroMedicoId: centroMedico,
+                        pCitaTipoId: tipoCita,
+                        pPacienteCategoriaId: CategoriaPaciente
+                    }, 
+                    success: function (d) {
+                        if (d.result.length > 0) {
+                            $("#Precio").val(d.result[0].precio);
+                        }
+                        else {
+                            $("#Precio").val("0");
+                        }
+                    },
+                    error: function () {
+                        alert("Error en la llamada");
+                    }
+                });
+
+            
+            }
+
+        });
+</script>
+}
+

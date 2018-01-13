@@ -1,0 +1,72 @@
+@model Clinica.Web.Models.ViewModels.CitaRegistroViewModel
+
+<div>
+    <h4>Detalle de la cita para: @Model.Paciente.FullName  </h4 >
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CitaId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CitaId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCita)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaCita)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Inicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Inicio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CentroMedicoId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CentroMedico.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CitaTipoId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CitaTipo.Descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfesionalId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Profesional.Nombres)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PacienteId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+    </dl>
+</div>
+<div>
+    @*@Html.ActionLink("Eitar", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    <a asp-action="Index">Regresar a Lista</a>
+</div>
