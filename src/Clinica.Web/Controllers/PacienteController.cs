@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Clinica.Web.Data;
 using Clinica.Web.Models;
+using Clinica.Util;
 
 namespace Clinica.Web.Controllers
 {
@@ -16,14 +17,24 @@ namespace Clinica.Web.Controllers
 
         public PacienteController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Paciente
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? numPagina)
         {
-            var applicationDbContext = _context.Paciente.Include(p => p.PacienteCategoria);
-            return View(await applicationDbContext.ToListAsync());
+            //var applicationDbContext = _context.Paciente.Include(p => p.PacienteCategoria);
+            //var result = await applicationDbContext.ToListAsync();
+            //return View(result);
+
+            var pacientes = from s in _context.Paciente
+                           select s;
+
+            pacientes = pacientes.OrderBy(p => p.ApellidoPaterno).Include(p => p.PacienteCategoria);
+
+            int tamañoPagina = 5;
+            return View(await PaginatedList<Paciente>.CreateAsync(pacientes.AsNoTracking(), numPagina ?? 1, tamañoPagina));
+
         }
 
         // GET: Paciente/Details/5
